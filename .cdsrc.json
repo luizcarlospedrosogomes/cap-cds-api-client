@@ -1,0 +1,7 @@
+{
+  "import": {
+      "as": "cds",
+      "force": true,
+      "include_namespaces": "sap,c4c"
+  }
+}

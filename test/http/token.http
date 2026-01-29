@@ -1,0 +1,3 @@
+@usernameBTP = {{$dotenv BTP-USER}}
+@passwordBTP= {{$dotenv BTP-PASSWORD}}
+

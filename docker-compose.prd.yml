@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  app:
+    image: api-client-app:latest
+    build: 
+      context: .
+      dockerfile: Dockerfile.production
+      
+      args:
+        # [Choice] Node.js version: 14, 12, 10
+        VARIANT: 18
+        # On Linux, you may need to update USER_UID and USER_GID below if not your local UID is not 1000.
+        USER_UID: 1000
+        USER_GID: 1000
+
+    volumes:
+      - .:/workspace:cached
+    

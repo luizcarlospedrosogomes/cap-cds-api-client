@@ -1,0 +1,7 @@
+api/dist
+node_modules
+coverage
+api/coverage
+.git
+api/.git
+api/node_modules
