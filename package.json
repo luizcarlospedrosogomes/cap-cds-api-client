@@ -47,7 +47,6 @@
     "swagger-ui-express": "^5.0.1"
   },
   "scripts": {
-    "postinstall": "patch-package",
     "start:prd": "cds deploy && cds run",
     "start": "cds run",
     "dev": "cds-ts watch",
@@ -136,7 +135,6 @@
     "dotenv": "^17.2.3",
     "nodemon": "^3.1.11",
     "npm-check-updates": "^19.3.1",
-    "patch-package": "^8.0.1",
     "rimraf": "^6.1.2",
     "sqlite3": "5.1.7",
     "typescript": "^5.9.3"
