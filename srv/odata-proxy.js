@@ -17,7 +17,7 @@ module.exports = function odataProxyDestination(destinationName) {
                     method: req.method,
                     url: req.originalUrl,
                     //   headers: req.headers,
-                    //   data: req.body
+                       data: req.body
                 },
                 { fetchCsrfToken: false }
             )
