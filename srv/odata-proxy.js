@@ -10,6 +10,7 @@ module.exports = function odataProxyDestination(destinationName) {
     return async function (req, res) {
         const authHeader = req.headers.authorization
         const jwt = authHeader?.startsWith('Bearer ') ? authHeader.substring(7) : undefined
+        const isBatch = req.originalUrl.endsWith('/$batch')
         try {
             // const destination = await getDestinationCache(); 
             const response = await executeHttpRequest({ destinationName, jwt },
@@ -17,7 +18,15 @@ module.exports = function odataProxyDestination(destinationName) {
                     method: req.method,
                     url: req.originalUrl,
                     //   headers: req.headers,
-                       data: req.body
+                    headers: {
+                         'content-type': req.headers['content-type'],
+                        'accept': req.headers['accept'],
+                        'dataserviceversion': req.headers['dataserviceversion'],
+                        'maxdataserviceversion': req.headers['maxdataserviceversion']
+                    },
+
+                    // 🔥 BODY RAW
+                    data: isBatch ? req.body : undefined
                 },
                 { fetchCsrfToken: false }
             )

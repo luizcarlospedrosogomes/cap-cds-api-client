@@ -43,6 +43,7 @@ module.exports = async (o) => {
     app.use(passport.authenticate('JWT', { session: false }));
     
     app.use(require('express-status-monitor')())    
+    app.use('/sap', express.raw({ type: () => true, limit: '50mb'}),);
     app.use('/sap/opu/odata', odataProxyDestination(process.env.API_MIDDLEWARE_DESTINATION || 'middleware-api-destination'))
     cds.emit ('bootstrap', app)              //> before bootstrapping
     app.baseDir       = o.baseDir

@@ -45,3 +45,61 @@ Authorization: Bearer {{token}}
 ### GET
 GET {{baseUrlLocal}}/sap/opu/odata/sprolims/SRV_LABSERV_SRV/SolicitationsSet?$skip=0&$top=20&$orderby=solicitation_id%20desc
 Authorization: Bearer {{token}}
+
+###
+###
+POST {{baseUrlLocal}}/sap/opu/odata/sprolims/SRV_LABSERV_SRV/$batch HTTP/1.1
+Authorization: Bearer {{token}}
+Accept: multipart/mixed
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: pt-BR
+Connection: keep-alive
+Content-Length: 732
+Content-Type: multipart/mixed;boundary=batch_447d-4fac-d29a
+Cookie: JSESSIONID=s%3AY0d3IG_PDfMQzFeK4e9V7X89GpDiboNy.KCdBCAKBtRZqUVQfl562x0ZElPAvo8HVJ61PVYSzoTw
+DataServiceVersion: 2.0
+Host: localhost:8080
+MaxDataServiceVersion: 2.0
+Origin: http://localhost:8080
+Referer: http://localhost:8080/index-cdn.html
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 Edg/144.0.0.0
+X-Requested-With: XMLHttpRequest
+sap-cancel-on-close: true
+sap-contextid-accept: header
+sec-ch-ua: "Not(A:Brand";v="8", "Chromium";v="144", "Microsoft Edge";v="144"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+x-csrf-token: 4481d3a9197652b7-ORWjaYpfjoGlvl0GpJWlyoOJjQ8
+
+--batch_447d-4fac-d29a
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+GET SolicitationsSet/$count HTTP/1.1
+sap-cancel-on-close: true
+sap-contextid-accept: header
+Accept: text/plain, */*;q=0.5
+Accept-Language: pt-BR
+DataServiceVersion: 2.0
+MaxDataServiceVersion: 2.0
+X-Requested-With: XMLHttpRequest
+
+
+--batch_447d-4fac-d29a
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+GET SolicitationsSet?$skip=0&$top=20&$orderby=solicitation_id%20desc HTTP/1.1
+sap-cancel-on-close: true
+sap-contextid-accept: header
+Accept: application/json
+Accept-Language: pt-BR
+DataServiceVersion: 2.0
+MaxDataServiceVersion: 2.0
+X-Requested-With: XMLHttpRequest
+
+
+--batch_447d-4fac-d29a--
