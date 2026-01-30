@@ -60,8 +60,8 @@
     "test-bind": "cds bind --profile development --exec npm run jest",
     "bind:dev": "cds bind --profile development",
     "clean": "rimraf dist/",
-    "copy-files": "copyfiles -u 1 srv/server.js srv/**/*.cds srv/**/*.json  dist/**",
-    "rename:path": "mv srv srv_ts && mv dist srv",
+    "copy-files": "find srv \\( -name '*.cds' -o -name '*.json' -o -name '*.csv' -o -name 'server.js' \\) -exec cp --parents {} dist/ \\;",
+    "rename:path": "mv srv srv_ts && mv dist/srv srv",
     "build:ts": "tsc --build && npm run copy-files && npm run rename:path"
   },
   "cds": {
