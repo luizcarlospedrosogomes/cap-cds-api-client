@@ -1,15 +1,14 @@
 const cds         = require('@sap/cds')
-const Sdk         = require('@dynatrace/oneagent-sdk')
 const express     = require('express')
 const helmet      = require('helmet')
 const cors        = require('cors');
-const DynaT       = Sdk.createInstance()
 const cov2ap       = require('@sap/cds-odata-v2-adapter-proxy')
-const requireDir  = require('require-dir');
 const cds_swagger = require ('cds-swagger-ui-express')
 const passport    = require("passport");
 const { XssecPassportStrategy, XsuaaService } = require("@sap/xssec");
 const { getServices, loadEnv } = require('@sap/xsenv');
+const odataProxyDestination = require ('./odata-proxy');
+
 //var bodyParser = require('body-parser')
 global.__base     = __dirname + "/"
 
@@ -44,7 +43,7 @@ module.exports = async (o) => {
     app.use(passport.authenticate('JWT', { session: false }));
     
     app.use(require('express-status-monitor')())    
-    
+    app.use('/sap/opu/odata', odataProxyDestination(process.env.API_MIDDLEWARE_DESTINATION || 'middleware-api-destination'))
     cds.emit ('bootstrap', app)              //> before bootstrapping
     app.baseDir       = o.baseDir
     o.app             = app        

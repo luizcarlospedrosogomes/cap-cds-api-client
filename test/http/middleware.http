@@ -1,4 +1,4 @@
-@baseUrlLocal = 'http://localhost:4004'
+@baseUrlLocal = http://localhost:4004
 @usernameBTP = {{$dotenv BTP-USER}}
 @passwordBTP= {{$dotenv BTP-PASSWORD}}
 
@@ -21,10 +21,18 @@ Authorization: Bearer {{token}}
 
 
 ### GET
-http://localhost:4004/logs-services/logs
+GET {{baseUrlLocal}}/ogs-services/logs
 Authorization: Bearer {{token}}
 
 
 ### GET
-http://localhost:4004/sap-services/checkService(serviceName='SolicitationsSet', top=5)
+GET {{baseUrlLocal}}/sap-services/checkService(serviceName='SolicitationsSet', top=5)
+Authorization: Bearer {{token}}
+
+### GET
+GET {{baseUrlLocal}}/sap/opu/odata/sprolims/SRV_LABSERV_SRV/$metadata
+Authorization: Bearer {{token}}
+
+### GET
+GET {{baseUrlLocal}}/sap/opu/odata/sprolims/SRV_LABSERV_SRV/SolicitationsSet?$top=5
 Authorization: Bearer {{token}}
