@@ -1,38 +1,32 @@
 {
-  "compilerOptions": {
-    "target": "ES2022",
-    "module": "NodeNext",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "skipLibCheck": true,
-    "checkJs": true,
-    "outDir": "./dist",
-    "rootDir": "./",
-    "rootDirs": [
-      "src",
-      "tests"
+    "compilerOptions": {
+        "target": "ES2022",
+        "module": "nodenext",
+        "outDir":"./dist",
+        "rootDir": "./",
+        "baseUrl": "./",
+        "allowJs": true,
+        "esModuleInterop": true,
+        "inlineSources": true,
+        "inlineSourceMap": true,
+        "moduleResolution": "nodenext",
+         "skipLibCheck": true,
+        "paths": {
+            "#cds-models/*": [
+                "./@cds-models/*"
+            ]
+        },
+        "types": [
+            "jest",
+            "node",
+            "@cap-js/cds-types",
+        ],
+    },
+    "include": [
+        "./srv/**/*"
     ],
-    "baseUrl": "./",
-    "noErrorTruncation": true,
-    "moduleResolution": "nodenext",
-    "typeRoots": [
-      "./src"
-    ],
-    "paths": {
-      "#cds-models/*": [
-        "./@cds-models/*/index.ts"
-      ]
-    }
-  },
-  "include": [
-    "srv",
-    "./@dispatcher"
-  ],
-  "exclude": [
-    "node_modules",
-    "srv/server.js"
+     "exclude": [
+     "node_modules",
+    "**/*.test.ts"
   ]
 }

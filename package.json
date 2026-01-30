@@ -77,6 +77,14 @@
           "forwardAuthToken": true
         }
       },
+      "middleware-api": {
+        "kind": "odata",
+        "credentials": {
+          "destination": "middleware-api-destination",
+          "path": "/sap/opu/odata/sprolims/SRV_LABSERV_SRV",
+          "forwardAuthToken": true
+        }
+      },
       "db": {
         "impl": "@cap-js/postgres",
         "dialect": "postgres",

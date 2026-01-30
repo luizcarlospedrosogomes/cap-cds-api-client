@@ -1,0 +1,30 @@
+@baseUrlLocal = 'http://localhost:4004'
+@usernameBTP = {{$dotenv BTP-USER}}
+@passwordBTP= {{$dotenv BTP-PASSWORD}}
+
+### login 
+# @name tokenPAYDEV
+GET https://spro-pay-as-you-go-nra66r3d.authentication.br10.hana.ondemand.com/oauth/token
+    ?grant_type=password
+    &username={{usernameBTP}}
+    &password={{passwordBTP}}
+Content-Type: 'application/x-www-form-urlencoded'
+Authorization: Basic {{$dotenv USER-XSUAA}}:{{$dotenv PASS-XSUAA}}
+
+@token = {{tokenPAYDEV.response.body.access_token}}
+
+
+### Teste de conexão com CAP CDS Client API
+### ============================================
+GET {{baseUrlLocal}}/logs-services/logs
+Authorization: Bearer {{token}}
+
+
+### GET
+http://localhost:4004/logs-services/logs
+Authorization: Bearer {{token}}
+
+
+### GET
+http://localhost:4004/sap-services/checkService(serviceName='SolicitationsSet', top=5)
+Authorization: Bearer {{token}}

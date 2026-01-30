@@ -1,1 +1,2 @@
-using from './src/modules/logs/logs-service';
+using from './src/modules/logs/logs-services';
+using from './src/modules/erp/sap-services';
