@@ -6,7 +6,7 @@ module.exports = function odataProxyDestination(destinationName) {
     if (!destinationName) {
         throw new Error('destinationName é obrigatório')
     }
- 
+
     return async function (req, res) {
         const authHeader = req.headers.authorization
         const jwt = authHeader?.startsWith('Bearer ') ? authHeader.substring(7) : undefined
@@ -22,12 +22,17 @@ module.exports = function odataProxyDestination(destinationName) {
                 { fetchCsrfToken: false }
             )
 
-            res.status(response.status)
+            const status = Number.isInteger(response.status) && response.status >= 100 ? response.status : 200
+
+            res.status(status)
 
             Object.entries(response.headers || {}).forEach(([k, v]) =>
                 res.setHeader(k, v)
             )
-
+            if (req.originalUrl.endsWith('/$count')) {
+                res.type('text/plain')
+                return res.send(String(response.data))
+            }
             res.send(response.data)
 
         } catch (err) {

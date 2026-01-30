@@ -36,3 +36,12 @@ Authorization: Bearer {{token}}
 ### GET
 GET {{baseUrlLocal}}/sap/opu/odata/sprolims/SRV_LABSERV_SRV/SolicitationsSet?$top=5
 Authorization: Bearer {{token}}
+
+### GET
+GET {{baseUrlLocal}}/sap/opu/odata/sprolims/SRV_LABSERV_SRV/SolicitationsSet/$count
+Authorization: Bearer {{token}}
+
+
+### GET
+GET {{baseUrlLocal}}/sap/opu/odata/sprolims/SRV_LABSERV_SRV/SolicitationsSet?$skip=0&$top=20&$orderby=solicitation_id%20desc
+Authorization: Bearer {{token}}
