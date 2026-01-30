@@ -9,7 +9,7 @@ FROM node:20-alpine
 WORKDIR /app
 COPY package*.json ./
 RUN npm install --production
-COPY --from=build /app/dist ./dist
+COPY . . 
 EXPOSE 4004
 ENTRYPOINT ["npm", "run", "start:prd"]
 USER node
