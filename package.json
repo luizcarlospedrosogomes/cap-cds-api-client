@@ -47,7 +47,7 @@
     "swagger-ui-express": "^5.0.1"
   },
   "scripts": {
-    "start:prd": "cds deploy && cds run --production --host 0.0.0.0 ",
+    "start:prd": "cds deploy && cds run ",
     "start": "cds run",
     "dev": "cds-ts watch",
     "dev:hybrid": "cds-ts watch --profile hybrid",
